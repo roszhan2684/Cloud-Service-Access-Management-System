@@ -57,3 +57,11 @@ async def change_user_plan(user_id: str, data: SubscriptionCreate, user=Depends(
     if result.modified_count == 0:
         raise HTTPException(status_code=404, detail="User not found or no change made.")
     return {"message": "User plan updated successfully"}
+from fastapi import status
+
+@router.delete("/{user_id}", status_code=status.HTTP_200_OK)
+async def delete_subscription(user_id: str, user=Depends(get_current_user)):
+    result = await db.subscriptions.delete_one({"user_id": user_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Subscription not found.")
+    return {"message": f"Subscription for user '{user_id}' deleted successfully"}

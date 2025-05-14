@@ -36,3 +36,5 @@ app.include_router(cloud_apis.router, tags=["Cloud Services"])
 @app.get("/")
 async def root():
     return {"message": "Roszhan-Jenny-Sufiyan's Cloud Service Access Management System"}
+from app.routes import users
+app.include_router(users.router, prefix="/users", tags=["Users"])

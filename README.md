@@ -141,6 +141,8 @@ Bearer \<your\_token>
 * GET /cloud/api4/{user\_id}
 * GET /cloud/api5/{user\_id}
 * GET /cloud/api6/{user\_id}
+  
+<br>
 
 ### 1. Authentication and Authorization
 
@@ -158,7 +160,9 @@ Bearer \<your\_token>
 
 -Try accessing admin-only endpoints with user token → Should return 403
 
--Try with admin token → Should allow access
+-Try with admin token → Should allow access  
+
+<br>
 
 ### 2. Users (POST /users, DELETE /users, GET /users)
 ***Create User (POST /users)***
@@ -183,7 +187,9 @@ Bearer \<your\_token>
 
 -Try with user token → Should return 403
 
--Try with admin token → Should return the user list
+-Try with admin token → Should return the user list  
+
+<br>
 
 ### 3. Permissions (POST /permissions, GET /permissions) 
 ***Create Permissions (POST /permissions)***
@@ -194,7 +200,9 @@ Bearer \<your\_token>
 
 ***Get All Permissions (GET /permissions)***
 
--Accessible by all roles → Should return the list of permission objects
+-Accessible by all roles → Should return the list of permission objects  
+
+<br>
 
 ### 4. Plans (POST /plans, GET /plans)
 ***Create Plan (POST /plans)***
@@ -207,7 +215,9 @@ Bearer \<your\_token>
 
 ***Get All Plans (GET /plans)***
 
--Accessible by all roles → Should return plan objects
+-Accessible by all roles → Should return plan objects  
+
+<br>
 
 ### 5. Subscriptions (POST, PUT, GET, DELETE)
 ***Subscribe a User (POST /subscriptions)***
@@ -236,7 +246,9 @@ Bearer \<your\_token>
 
 -With user token → Should return 403
 
--With admin token → Should succeed
+-With admin token → Should succeed  
+
+<br>
 
 ### 6. Usage Tracking and Limits
 ***GET /subscriptions/{user_id}/usage***
@@ -249,7 +261,9 @@ Admin checks anyone’s usage → Should succeed
 
 Call GET /cloud/api1/{user_id} repeatedly until usage limit is hit → Last call should return 429 Too Many Requests
 
-Try with unauthorized user → Should return 403
+Try with unauthorized user → Should return 403  
+
+<br>
 
 ### 7. Access Control (GET /access/{user_id}/{api_name})
 ***Check Access***
@@ -260,7 +274,9 @@ User with subscription, but API not in permissions → Should return 403
 
 User with permission and usage within limit → Should return access granted
 
-User exceeding usage limit → Should return 429
+User exceeding usage limit → Should return 429  
+
+<br>
 
 ### 8. Cloud APIs (GET /cloud/api1–api6/{user_id})
 ***Run All 6 APIs***

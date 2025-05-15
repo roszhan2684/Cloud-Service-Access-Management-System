@@ -1,4 +1,4 @@
-###Authors
+### Authors
 
 Roszhan Raj Meenakshi Sundhresan
 Graduate Student in Computer Science
@@ -12,11 +12,11 @@ Nayeem Sufyaan Abdul
 Graduate Student in Computer Science
 California State University, Fullerton.
 
-###Cloud Service Access Management System
+### Cloud Service Access Management System
 
 This project is a backend system built with FastAPI and MongoDB that manages access to cloud services based on user subscription plans. It includes JWT-based authentication, role-based access control (RBAC), and usage tracking for various APIs.
 
-####Features
+#### Features
 
 * User Registration (open for all)
 * JWT Authentication (admin/user roles)
@@ -26,7 +26,7 @@ This project is a backend system built with FastAPI and MongoDB that manages acc
 * 6 Simulated Cloud Service APIs
 * Admin can manage permissions, plans, and users
 
-####Project Structure
+#### Project Structure
 
 app/
 ├── db.py                 - MongoDB setup
@@ -35,12 +35,12 @@ app/
 ├── routes/               - All API routes
 ├── services/             - Utility functions, JWT, etc.
 
-####Requirements
+#### Requirements
 
 * Python 3.10+
 * MongoDB running locally or remotely
 
-####Install dependencies:
+#### Install dependencies:
 
 pip install -r requirements.txt
 
@@ -49,7 +49,7 @@ Example .env file:
 MONGODB\_URI=mongodb://localhost:27017
 DB\_NAME=cloud\_access
 
-####Run the Project
+#### Run the Project
 
 uvicorn app.main\:app --reload
 
@@ -57,7 +57,7 @@ Visit the docs at:
 
 [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
-####Authentication
+#### Authentication
 
 Use /token to log in and receive a JWT access token.
 
@@ -75,44 +75,44 @@ Use the Authorize button in Swagger UI and enter:
 
 Bearer \<your\_token>
 
-####Key API Endpoints
+#### Key API Endpoints
 
-#####Authentication
+##### Authentication
 
 * POST /token - Login to get JWT token
 
-#####Users
+##### Users
 
 * POST /users/ - Create user (public)
 * DELETE /users/{username} - Delete user (admin only)
 * GET /users/ - View all users (admin only)
 
-#####Permissions
+##### Permissions
 
 * POST /permissions/ - Create permissions (admin only)
 * GET /permissions/ - View all permissions
 
-#####Plans
+##### Plans
 
 * POST /plans/ - Create a subscription plan (admin only)
 * GET /plans/ - View all plans
 
-#####Subscriptions
+##### Subscriptions
 
 * POST /subscriptions/ - Subscribe user to a plan
 * GET /subscriptions/{user\_id} - View subscription
 * PUT /subscriptions/{user\_id} - Change subscription
 * DELETE /subscriptions/{user\_id} - Remove subscription
 
-#####Access Control
+##### Access Control
 
 * GET /access/{user\_id}/{api\_name} - Check API access
 
-#####Usage
+##### Usage
 
 * GET /subscriptions/{user\_id}/usage - View API usage
 
-#####Cloud APIs (6 total)
+##### Cloud APIs (6 total)
 
 * GET /cloud/api1/{user\_id} - Simulated cloud service
 * GET /cloud/api2/{user\_id}
@@ -121,7 +121,7 @@ Bearer \<your\_token>
 * GET /cloud/api5/{user\_id}
 * GET /cloud/api6/{user\_id}
 
-#####1. Authentication and Authorization
+##### 1. Authentication and Authorization
 Login (POST /token)
 
 Log in with roszhan (admin) → Should return a JWT token
@@ -138,7 +138,7 @@ Try accessing admin-only endpoints with user token → Should return 403
 
 Try with admin token → Should allow access
 
-#####2. Users (POST /users, DELETE /users, GET /users)
+##### 2. Users (POST /users, DELETE /users, GET /users)
 Create User (POST /users)
 
 Create a regular user without any token → Should succeed
@@ -163,7 +163,7 @@ Try with user token → Should return 403
 
 Try with admin token → Should return the user list
 
-#####3. Permissions (POST /permissions, GET /permissions)
+##### 3. Permissions (POST /permissions, GET /permissions)
 Create Permissions (POST /permissions)
 
 Try creating permissions with user token → Should return 403
@@ -174,7 +174,7 @@ Get All Permissions (GET /permissions)
 
 Accessible by all roles → Should return the list of permission objects
 
-#####4. Plans (POST /plans, GET /plans)
+##### 4. Plans (POST /plans, GET /plans)
 Create Plan (POST /plans)
 
 Try without token → Should return 401
@@ -187,7 +187,7 @@ Get All Plans (GET /plans)
 
 Accessible by all roles → Should return plan objects
 
-#####5. Subscriptions (POST, PUT, GET, DELETE)
+##### 5. Subscriptions (POST, PUT, GET, DELETE)
 Subscribe a User (POST /subscriptions)
 
 Without token → Should succeed only for regular users
@@ -216,7 +216,7 @@ With user token → Should return 403
 
 With admin token → Should succeed
 
-#####6. Usage Tracking and Limits
+##### 6. Usage Tracking and Limits
 GET /subscriptions/{user_id}/usage
 
 User checks own usage → Should succeed
@@ -229,7 +229,7 @@ Call GET /cloud/api1/{user_id} repeatedly until usage limit is hit → Last call
 
 Try with unauthorized user → Should return 403
 
-#####7. Access Control (GET /access/{user_id}/{api_name})
+##### 7. Access Control (GET /access/{user_id}/{api_name})
 Check Access
 
 User without a subscription → Should return 404
@@ -240,7 +240,7 @@ User with permission and usage within limit → Should return access granted
 
 User exceeding usage limit → Should return 429
 
-#####8. Cloud APIs (GET /cloud/api1–api6/{user_id})
+##### 8. Cloud APIs (GET /cloud/api1–api6/{user_id})
 Run All 6 APIs
 
 Subscribe user to a plan with all 6 permissions
@@ -273,7 +273,7 @@ Try calling an API that isn’t in the user’s plan → Should return 403
 
 Try when usage exceeded → Should return 429
 
-####License
+#### License
 
 This project is for educational use. You can extend it and build upon it for your own applications.
 

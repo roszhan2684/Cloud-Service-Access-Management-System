@@ -1,4 +1,4 @@
-### Authors
+## Authors
 
 -Roszhan Raj Meenakshi Sundhresan
 Graduate Student in Computer Science

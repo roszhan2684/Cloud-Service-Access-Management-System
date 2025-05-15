@@ -253,28 +253,28 @@ Bearer \<your\_token>
 ### 6. Usage Tracking and Limits
 ***GET /subscriptions/{user_id}/usage***
 
-User checks own usage → Should succeed
+-User checks own usage → Should succeed
 
-Admin checks anyone’s usage → Should succeed
+-Admin checks anyone’s usage → Should succeed
 
 ***Use Cloud API Multiple Times***
 
-Call GET /cloud/api1/{user_id} repeatedly until usage limit is hit → Last call should return 429 Too Many Requests
+-Call GET /cloud/api1/{user_id} repeatedly until usage limit is hit → Last call should return 429 Too Many Requests
 
-Try with unauthorized user → Should return 403  
+-Try with unauthorized user → Should return 403  
 
 <br>
 
 ### 7. Access Control (GET /access/{user_id}/{api_name})
 ***Check Access***
 
-User without a subscription → Should return 404
+-User without a subscription → Should return 404
 
-User with subscription, but API not in permissions → Should return 403
+-User with subscription, but API not in permissions → Should return 403
 
-User with permission and usage within limit → Should return access granted
+-User with permission and usage within limit → Should return access granted
 
-User exceeding usage limit → Should return 429  
+U-ser exceeding usage limit → Should return 429  
 
 <br>
 
@@ -307,9 +307,9 @@ The usage has not exceeded the limit
 
 ***Edge Cases***
 
-Try calling an API that isn’t in the user’s plan → Should return 403  
+-Try calling an API that isn’t in the user’s plan → Should return 403  
 
-Try when usage exceeded → Should return 429
+-Try when usage exceeded → Should return 429
 
 ## License
 

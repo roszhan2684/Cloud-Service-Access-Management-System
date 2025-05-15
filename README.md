@@ -84,11 +84,13 @@ Example Users
 
 * Username: roszhan
 * Password: secret123
-* Role: admin  
+* Role: admin
+  
 <br>
-* Username: john
-* Password: user123
-* Role: user  
+
+* Username: john  
+* Password: user123  
+* Role: user       
 
 -Use the Authorize button in Swagger UI and enter:
 
